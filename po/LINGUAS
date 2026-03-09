@@ -1,5 +1,5 @@
 # please keep this list sorted alphabetically
-#
+ab
 af
 an
 ar
@@ -11,6 +11,7 @@ bg
 bn_IN
 br
 ca
+ckb
 crh
 cs
 da
@@ -37,11 +38,14 @@ id
 is
 it
 ja
+ka
+kab
 kk
 kn
 ko
 ku
 ky
+lg
 lt
 lv
 mk
@@ -63,7 +67,7 @@ sk
 sl
 sq
 sr
-sr@Latn
+sr@latin
 sv
 ta
 te
@@ -71,6 +75,7 @@ th
 tr
 uk
 vi
+wa
 zh_CN
 zh_HK
 zh_TW
