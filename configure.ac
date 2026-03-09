@@ -1,8 +1,8 @@
 AC_INIT(xdg-user-dirs-update.c)
 
-AM_INIT_AUTOMAKE(xdg-user-dirs, 0.17)
+AM_INIT_AUTOMAKE(xdg-user-dirs, 0.19)
 AM_CONFIG_HEADER(config.h)
-	
+
 AM_SANITY_CHECK
 AM_MAINTAINER_MODE
 
@@ -13,13 +13,14 @@ AC_PROG_CPP
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
-AM_PROG_MKDIR_P	
+AM_PROG_MKDIR_P
 AM_ICONV
 
 GETTEXT_PACKAGE=xdg-user-dirs
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [The gettext domain name])
 AC_SUBST(GETTEXT_PACKAGE)
 
+AM_GNU_GETTEXT_REQUIRE_VERSION([0.14.4])
 AM_GNU_GETTEXT([external])
 
 dnl ==========================================================================
@@ -76,6 +77,11 @@ if test x$enable_documentation = xyes; then
    fi
 fi
 AM_CONDITIONAL(BUILD_DOCUMENTATION, test x$enable_documentation = xyes)
+
+PKG_CHECK_EXISTS([systemd],
+      [systemduserunitdir=$($PKG_CONFIG --variable=systemduserunitdir systemd)],
+      [systemduserunitdir='${prefix}/lib/systemd/user'])
+AC_SUBST(systemduserunitdir)
 
 AC_OUTPUT([ po/Makefile.in
 Makefile
